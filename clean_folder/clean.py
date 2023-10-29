@@ -45,6 +45,7 @@ def sorter(path: Path):
             FOLDERS.append(path / file.name)
             sorter(path / file.name)
 
+    FOLDERS.append(path)
     return ALL_LISTS, KNOWN_SUFFIXES, UNKNOWN_SUFFIXES, FOLDERS
 
 
