@@ -119,10 +119,11 @@ def packet_start():
 #####USAGE: python main.py --source 'source' --output 'output'
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Sorting directory')
-    parser.add_argument('--source', '-s', required=True, help='Source folder')
-    parser.add_argument('--output', '-o', default='destination', help='Output folder')
-    args = vars(parser.parse_args())
-    inut = args.get('source')
-    output = args.get('output')
-    real_sorter(Path(inut),Path(output))
+    if sys.argv[1] and sys.argv[2]:
+        inut = Path(sys.argv[1])
+        output = Path(sys.argv[2])
+        real_sorter(Path(inut),Path(output))
+    elif sys.argv[1] and not sys.argv[2]:
+        print('Need second argument!\nCorrect usage: arg1=where_from(dir)    arg2=where_to(dir)')
+    else:
+        print('Doesnt work! Not enough/no arguments!\nCorrect usage: arg1=where_from(dir)    arg2=where_to(dir)')
